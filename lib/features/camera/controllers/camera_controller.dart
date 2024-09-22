@@ -87,37 +87,7 @@ class XCameraController extends ValueNotifier<XCameraValue> {
   }
 
   Future<GalleryAsset?> takePicture(BuildContext context) async {
-    if (value.isTakingPicture) return null;
-    return await _safeCall(
-      callback: () async {
-        value = value.copyWith(isTakingPicture: true);
-        final navigator = Navigator.of(context);
-
-        final xFile = await _cameraController!.takePicture();
-        await _cameraController!.setFlashMode(FlashMode.off);
-        final file = File(xFile.path);
-        final bytes = await file.readAsBytes();
-        final now = DateTime.now();
-        final fileName = 'FILE_${DateFormat(datePattern).format(now)}.jpg';
-        final asset = await PhotoManager.editor.saveImage(bytes, title: fileName);
-        if (file.existsSync()) file.deleteSync();
-
-        if (asset != null) {
-          if (navigator.mounted) {
-            final galleryAsset = asset.toGalleryAsset.copyWith(pickedThumbData: bytes, pickedFile: file);
-            navigator.pop([galleryAsset]);
-            return galleryAsset;
-          }
-        } else {
-          final exception = CameraExceptions.takePicture;
-          value = value.copyWith(isTakingPicture: false, error: exception);
-        }
-      },
-      onError: () {  
-        value = value.copyWith(isTakingPicture: false);
-      },
-      customException: CameraExceptions.takePicture,
-    );
+ return null;
   }
 
   Future<void> toggleFlashMode() async {
