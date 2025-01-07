@@ -99,7 +99,7 @@ class XCameraController extends ValueNotifier<XCameraValue> {
         final bytes = await file.readAsBytes();
         final now = DateTime.now();
         final fileName = 'FILE_${DateFormat(datePattern).format(now)}.jpg';
-        final asset = await PhotoManager.editor.saveImage(bytes, title: fileName);
+        final asset = await PhotoManager.editor.saveImage(bytes, title: fileName, filename: fileName);
         if (file.existsSync()) file.deleteSync();
 
         if (asset != null) {
