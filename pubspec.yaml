@@ -17,7 +17,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  camera: ^0.10.5+2           # Plugin for interacting with the camera
+  camera: ^0.11.3             # Plugin for interacting with the camera
   collection: ^1.16.0         # Utility functions and classes for Dart collections
   meta: ^1.7.0                # Metadata classes for Dart
   path: ^1.8.1                # Library for working with file and directory paths

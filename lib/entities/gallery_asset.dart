@@ -4,7 +4,7 @@ import 'dart:typed_data';
 import 'package:photo_manager/photo_manager.dart';
 
 class GalleryAsset extends AssetEntity {
-  const GalleryAsset({
+  GalleryAsset({
     required super.id,
     required super.height,
     required super.width,
